@@ -1,0 +1,35 @@
+.ellipsis () {
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* 固定@line的高度 */
+.multiple-line-ellipsis (@line, @lh) {
+  overflow: hidden;
+  word-break: break-all;
+  display: -webkit-box;
+  -webkit-line-clamp: @line;
+  -webkit-box-orient: vertical;
+  /* 这两个属性不起作用 */
+  -ms-line-clamp: @line;
+  -ms-box-orient: vertical;
+  .line-height(@lh);
+}
+
+/* 不固定区块的高度，此方法不兼容wp */
+.multiple-line-ellipsis-shrink (@line, @lh) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: @line;
+  -webkit-box-orient: vertical;
+  -ms-line-clamp: @line;
+  -ms-box-orient: vertical;
+  .line-height(@lh);
+}
+
+.line-height(@a) {
+  line-height: unit(@a/2, px);
+  line-height: unit(@a/@base, rem);
+}
